@@ -46,17 +46,28 @@ export const RepositoryCard: React.FC<Props> = ({
       }}
       onClick={() => onSelect(repository.id)}
     >
-      <Checkbox checked={selected} />
+      <Checkbox 
+        checked={selected}
+        aria-label={`Select ${repository.name}`}
+      />
       <CardContent sx={{ flex: 1 }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography variant="h6" component="div">
             {repository.name}
           </Typography>
           <Stack direction="row" spacing={1}>
-            <IconButton onClick={handleUnstar} size="small">
+            <IconButton 
+              onClick={handleUnstar} 
+              size="small"
+              aria-label={`Unstar ${repository.name}`}
+            >
               <Star />
             </IconButton>
-            <IconButton onClick={handleDelete} size="small">
+            <IconButton 
+              onClick={handleDelete} 
+              size="small"
+              aria-label={`Delete ${repository.name}`}
+            >
               <Delete />
             </IconButton>
           </Stack>

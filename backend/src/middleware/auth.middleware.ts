@@ -1,23 +1,25 @@
 import { Request, Response, NextFunction } from 'express';
-import { AppError } from './error.middleware';
 
-export const authMiddleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export class AppError extends Error {
+  constructor(public message: string, public statusCode: number) {
+    super(message);
+    this.name = 'AppError';
+  }
+}
+
+export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
 
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    throw new AppError(401, 'No token provided');
+  if (!authHeader) {
+    throw new AppError('No token provided', 401);
   }
 
-  const token = authHeader.split(' ')[1];
+  const [, token] = authHeader.split(' ');
+
   if (!token) {
-    throw new AppError(401, 'Invalid token format');
+    throw new AppError('Invalid token format', 401);
   }
 
-  // Add token to request for use in routes
   req.token = token;
   next();
 };

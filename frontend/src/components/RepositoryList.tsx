@@ -104,8 +104,9 @@ export const RepositoryList: React.FC<Props> = ({
           fullWidth
         />
         <FormControl sx={{ minWidth: 120 }}>
-          <InputLabel>Language</InputLabel>
+          <InputLabel id="language-select-label">Language</InputLabel>
           <Select
+            labelId="language-select-label"
             value={languageFilter}
             label="Language"
             onChange={(e) => setLanguageFilter(e.target.value)}
@@ -119,8 +120,9 @@ export const RepositoryList: React.FC<Props> = ({
           </Select>
         </FormControl>
         <FormControl sx={{ minWidth: 120 }}>
-          <InputLabel>Sort by</InputLabel>
+          <InputLabel id="sort-select-label">Sort by</InputLabel>
           <Select
+            labelId="sort-select-label"
             value={sortField}
             label="Sort by"
             onChange={(e) => setSortField(e.target.value as SortField)}
