@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Install and Build Frontend
+      working-directory: ./frontend
+      run: |
+        npm ci
+        npm run build
+        npm test -- --watchAll=false
+        
+    - name: Install and Build Backend
+      working-directory: ./backend
+      run: |
+        npm ci
+        npm run build

@@ -1,0 +1,35 @@
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Coverage directories
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Build output
+dist/
+build/
+
+# Dependency lock files at root (if any)
+/package-lock.json
+/yarn.lock
