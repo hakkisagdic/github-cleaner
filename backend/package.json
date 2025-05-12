@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@octokit/rest": "^21.1.1",
-    "@types/cors": "^2.8.17",
+    "@types/cors": "^2.8.18",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.15.3",
